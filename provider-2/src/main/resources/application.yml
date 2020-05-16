@@ -1,0 +1,21 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+server:
+  port: 8083
+spring:
+  application:
+    name: service-provider
+  cloud:
+    config:
+      label: master
+      profile: dev
+      discovery:
+        enabled:  true #是从配置中心读取文件
+        serviceId: config-server  #配置中心的servieId，服务名称，通过服务名称去 Eureka注册中心找服务
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh,health,info
